@@ -327,7 +327,7 @@ void floy::draw(){
     
 	
 	ofFill();
-	ofCircle(pos.x, pos.y, 3);
+//	ofCircle(pos.x, pos.y, 3);
 	
 	ofVec2f velNormal = vel;
 	velNormal.normalize();
@@ -336,7 +336,7 @@ void floy::draw(){
 //	velPerp.x = -velNormal.y;
 //	velPerp.y = velNormal.x;
 //	
-//	ofLine(pos.x, pos.y, pos.x + velNormal.x*10, pos.y + velNormal.y*10);
+	ofLine(pos.x, pos.y, pos.x + velNormal.x*10, pos.y + velNormal.y*10);
 	   
 }
 

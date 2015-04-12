@@ -22,7 +22,7 @@ void OscManager::fireMessage(ofxOscMessage *m){
     }else if(m->getAddress() == "/al_str"){
         float fnum = m->getArgAsFloat(0);
         ofNotifyEvent(chgAlStr, fnum);
-    }else if(m->getAddress() == "/alignment"){
+    }else if(m->getAddress() == "/align"){
         float fnum = m->getArgAsFloat(0);
         ofNotifyEvent(chgAlign, fnum);
     }else if(m->getAddress() == "/sp_str"){

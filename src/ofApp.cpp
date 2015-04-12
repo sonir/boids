@@ -60,7 +60,7 @@ void ofApp::setDamping(float &val){
     
     float scaled_num = (val*DAMPING_MAX);
     boids.damping = scaled_num;
-    cout << "separation: " << boids.damping << endl;
+    cout << "dumping: " << boids.damping << endl;
     
 }
 

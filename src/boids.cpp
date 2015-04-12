@@ -9,20 +9,16 @@
 #include "boids.h"
 
 void Boids::setup(){
-    cout << "setup st" << endl;
     
     for (int i = 0; i < FLOY_MAX; i++){
         floy myfloy;
         myfloy.setInitialCondition(ofRandom(0,ofGetWidth()),ofRandom(0,ofGetHeight()),0,0);
         floys.push_back(myfloy);
     }
-    cout << "setup fin" << endl;
-
     
 }
 
 void Boids::update(int mouseX, int mouseY){
-    cout << "update" << endl;
     for (int i = 0; i < floys.size(); i++){
         floys[i].cohesion.distance = cohesion;
         floys[i].alignment.distance = alignment;
