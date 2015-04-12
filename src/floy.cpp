@@ -323,20 +323,20 @@ void floy::update(){
 }
 
 //------------------------------------------------------------
-void floy::draw(){
+void floy::draw(float size){
     
 	
 	ofFill();
-//	ofCircle(pos.x, pos.y, 3);
+	ofCircle(pos.x, pos.y, size);
 	
-	ofVec2f velNormal = vel;
-	velNormal.normalize();
+//	ofVec2f velNormal = vel;
+//	velNormal.normalize();
 	
 //	ofVec2f velPerp;
 //	velPerp.x = -velNormal.y;
 //	velPerp.y = velNormal.x;
-//	
-	ofLine(pos.x, pos.y, pos.x + velNormal.x*10, pos.y + velNormal.y*10);
+//
+//	ofLine(pos.x, pos.y, pos.x + velNormal.x*10, pos.y + velNormal.y*10);
 	   
 }
 

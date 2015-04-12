@@ -12,6 +12,8 @@
 	<dict>
 		<key>0EA25F6B559C58AF222E0B3D4BF0C52D3A89D777</key>
 		<string>https://github.com/sonir/1504_weaverStorm.git</string>
+		<key>7B58C87142A467DE28E12E0B26A51A7693C4124A</key>
+		<string>https://github.com/sonir/boids.git</string>
 		<key>AA005C2C69B0D20EC1E9D7E90A120C805800A3B5</key>
 		<string>https://github.com/sonir/slOscManager.git</string>
 	</dict>
@@ -20,18 +22,28 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0EA25F6B559C58AF222E0B3D4BF0C52D3A89D777</key>
+		<string>../../../storm</string>
+		<key>7B58C87142A467DE28E12E0B26A51A7693C4124A</key>
 		<string>../..</string>
 		<key>AA005C2C69B0D20EC1E9D7E90A120C805800A3B5</key>
-		<string>../../../../../addons/slOscManager</string>
+		<string>../../../addons/slOscManager</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/sonir/1504_weaverStorm.git</string>
+	<string>https://github.com/sonir/boids.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0EA25F6B559C58AF222E0B3D4BF0C52D3A89D777</string>
+	<string>7B58C87142A467DE28E12E0B26A51A7693C4124A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7B58C87142A467DE28E12E0B26A51A7693C4124A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>boids</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

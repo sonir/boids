@@ -60,7 +60,7 @@ class floy{
 	
 		void setInitialCondition(float px, float py, float vx, float vy);
         void update();
-        void draw();
+        void draw(float size);
 	
 		void bounceOffWalls();
 	

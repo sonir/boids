@@ -52,6 +52,9 @@ void OscManager::fireMessage(ofxOscMessage *m){
     }else if(m->getAddress() == "/blur"){
         float fnum = m->getArgAsFloat(0);
         ofNotifyEvent(chgBlur, fnum);
+    }else if(m->getAddress() == "/size"){
+        float fnum = m->getArgAsFloat(0);
+        ofNotifyEvent(chgSize, fnum);
     }
     
 

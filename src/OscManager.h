@@ -34,7 +34,7 @@ class OscManager:public slOscManager {
     ofEvent<float> chgCamY; //Add your own event and invole it in receiveMessage
     ofEvent<float> chgBrightness; //Add your own event and invole it in receiveMessage
     ofEvent<float> chgBlur; //Add your own event and invole it in receiveMessage
-    
+    ofEvent<float> chgSize; //Add your own event and invole it in receiveMessage
     
 };
 

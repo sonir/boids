@@ -18,6 +18,8 @@
 #define SEPARATION_STRENGTH 0.5
 #define SEPARATION 100.0
 #define DAMPING 0.05
+#define FLOY_SIZE 3
+#define FLOY_SIZE_MAX 20.0f
 
 
 #define FLOY_MAX 150
@@ -43,6 +45,7 @@ class Boids:public slAppManager {
 
     // let's make a vector of them
     vector <floy> floys;
+    float floy_size = FLOY_SIZE;
     float cohesion = COHESION;
     float alignment = ALIGMENT;
     float separation = SEPARATION;

@@ -9,13 +9,15 @@
 #include "boids.h"
 
 void Boids::setup(){
-    
+
     for (int i = 0; i < FLOY_MAX; i++){
         floy myfloy;
         myfloy.setInitialCondition(ofRandom(0,ofGetWidth()),ofRandom(0,ofGetHeight()),0,0);
         floys.push_back(myfloy);
     }
     
+    cout << floy_size << endl;
+
 }
 
 void Boids::update(int mouseX, int mouseY){
@@ -80,7 +82,7 @@ void Boids::draw(){
     ofSetColor(brightness);
     
     for (int i = 0; i < floys.size(); i++){
-        floys[i].draw();
+        floys[i].draw(floy_size);
     }
     
 }

@@ -58,6 +58,7 @@ public:
     void setCamY(float &val);
     void setBrightness(float &val);
     void setBlur(float &val);
+    void setSize(float &val);
     int pointX = 0;
     int pointY = 0;
     

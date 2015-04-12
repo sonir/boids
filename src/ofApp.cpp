@@ -64,6 +64,15 @@ void ofApp::setDamping(float &val){
     
 }
 
+//--------------------------------------------------------------
+void ofApp::setSize(float &val){
+    
+    float scaled_num = val*FLOY_SIZE_MAX;
+    boids.floy_size = scaled_num;
+    cout << "size: " << boids.floy_size << endl;
+    
+}
+
 
 //--------------------------------------------------------------
 void ofApp::setPointX(float &val){
@@ -203,7 +212,8 @@ void ofApp::setup(){
     ofAddListener(osc.chgCamY, this, &ofApp::setCamY);
     ofAddListener(osc.chgBrightness, this, &ofApp::setBrightness);
     ofAddListener(osc.chgBlur, this, &ofApp::setBlur);
-
+    ofAddListener(osc.chgSize, this, &ofApp::setSize);
+    
     //Setup boids
     boids.setup();
 
@@ -243,6 +253,11 @@ void ofApp::draw(){
         ofSetColor(255, 0, 0);
         ofCircle(ofGetWidth() - 20, 20, 5);
     }
+    
+    // ログを表示
+    ofSetColor(255);
+    ofDrawBitmapString("fps = " + ofToString(ofGetFrameRate()), 10, 20);
+    
     
     
 }
