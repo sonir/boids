@@ -26,6 +26,7 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F204B9F71AD9F33600F77A2C /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F204B9F31AD9F33600F77A2C /* ofxVideoRecorder.cpp */; };
 		F20E6F1A1AD9CA5D009D49B3 /* boids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F20E6F181AD9CA5D009D49B3 /* boids.cpp */; };
 		F20E6F1D1AD9CA7A009D49B3 /* floy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F20E6F1B1AD9CA7A009D49B3 /* floy.cpp */; };
 		F20E6F201AD9CA97009D49B3 /* Storm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F20E6F1E1AD9CA97009D49B3 /* Storm.cpp */; };
@@ -102,6 +103,8 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		F204B9F31AD9F33600F77A2C /* ofxVideoRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoRecorder.cpp; sourceTree = "<group>"; };
+		F204B9F41AD9F33600F77A2C /* ofxVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoRecorder.h; sourceTree = "<group>"; };
 		F20E6F181AD9CA5D009D49B3 /* boids.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boids.cpp; sourceTree = "<group>"; };
 		F20E6F191AD9CA5D009D49B3 /* boids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boids.h; sourceTree = "<group>"; };
 		F20E6F1B1AD9CA7A009D49B3 /* floy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = floy.cpp; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F204B9ED1AD9F33600F77A2C /* ofxVideoRecorder */,
 				F2B74B1C1AD94CBC0095590B /* slOscManager */,
 				F2B74AE31AD94C4C0095590B /* ofxOsc */,
 				F290248E1AD8F7F10044EDF7 /* slAppManager */,
@@ -271,6 +275,24 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		F204B9ED1AD9F33600F77A2C /* ofxVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				F204B9F21AD9F33600F77A2C /* src */,
+			);
+			name = ofxVideoRecorder;
+			path = ../../../addons/ofxVideoRecorder;
+			sourceTree = "<group>";
+		};
+		F204B9F21AD9F33600F77A2C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F204B9F31AD9F33600F77A2C /* ofxVideoRecorder.cpp */,
+				F204B9F41AD9F33600F77A2C /* ofxVideoRecorder.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		F290248E1AD8F7F10044EDF7 /* slAppManager */ = {
@@ -518,6 +540,7 @@
 				F2B74B741AD94CBC0095590B /* slOscManager.cpp in Sources */,
 				F2B74B181AD94C4C0095590B /* ofxOscMessage.cpp in Sources */,
 				F2B74B131AD94C4C0095590B /* OscOutboundPacketStream.cpp in Sources */,
+				F204B9F71AD9F33600F77A2C /* ofxVideoRecorder.cpp in Sources */,
 				F2B74B0E1AD94C4C0095590B /* IpEndpointName.cpp in Sources */,
 				F20E6F1D1AD9CA7A009D49B3 /* floy.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -558,6 +581,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"../../../addons/ofVideoRecorder/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -589,6 +616,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"../../../addons/ofVideoRecorder/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",

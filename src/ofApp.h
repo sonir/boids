@@ -13,6 +13,7 @@
 #include "slAppManager.h"
 #include "Boids.h"
 #include "OscManager.h"
+#include "ofxVideoRecorder.h"
 
 class ofApp : public ofBaseApp{
     
@@ -62,6 +63,25 @@ public:
     
     Boids boids;
     
+    
+    //VideoCapture
+    void audioIn(float *input, int bufferSize, int nChannels);
+    ofFbo cap;
+    ofPixels p;
+    ofImage *img;
+    ofxVideoRecorder    vidRecorder;
+    ofSoundStream       soundStream;
+    bool bRecording;
+    int sampleRate;
+    int channels;
+    string fileName;
+    string fileExt;
+    
+    ofFbo recordFbo;
+    ofPixels recordPixels;
+    ofPixels converted;
+    void convertPixels();
+
     
     
 };

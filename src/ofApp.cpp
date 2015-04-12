@@ -153,6 +153,40 @@ void ofApp::setBlur(float &val){
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+    ofSetFrameRate(30);
+    
+    
+    //SetupVideoCapture
+    sampleRate = 44100;
+    channels = 2;
+    ofSetLogLevel(OF_LOG_VERBOSE);
+    fileName = "testMovie";
+    fileExt = ".mov"; // ffmpeg uses the extension to determine the container type. run 'ffmpeg -formats' to see supported formats
+    
+    // override the default codecs if you like
+    // run 'ffmpeg -codecs' to find out what your implementation supports (or -formats on some older versions)
+    vidRecorder.setVideoCodec("mpeg4");
+    vidRecorder.setVideoBitrate("3200k"); //def is 800k
+    vidRecorder.setAudioCodec("mp3");
+    vidRecorder.setAudioBitrate("192k");
+    
+//        soundStream.listDevices();
+//        soundStream.setDeviceID(0);
+    soundStream.setup(this, 0, channels, sampleRate, 256, 4);
+    
+    bRecording = false;
+    ofEnableAlphaBlending();
+    
+    //Setup FBO
+    cap.allocate(SC_WIDTH,SC_HEIGHT);
+    cap.begin();
+    ofClear(0, 0, 0);
+    cap.end();
+    //    img = new ofImage;
+    //Set Image time for RGB (without RGBA)
+    converted.setImageType(OF_IMAGE_COLOR);
+
+
     //Setup OSC Event Fire
     ofAddListener(osc.chgCoStr, this, &ofApp::setCoStr);
     ofAddListener(osc.chgCohesion, this, &ofApp::setCohesion);
@@ -181,11 +215,20 @@ void ofApp::update(){
 
     boids.update(pointX, pointY);
     osc.update();
+    
+    if(bRecording){
+        cap.readToPixels(recordPixels);
+        convertPixels();
+        vidRecorder.addFrame(converted);
+    }
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+    cap.begin();
+    
     ofSetBackgroundAuto(false);
     ofSetColor(0, 0, 0, blur); //半透明の黒（背景色）
     ofRect(0, 0, ofGetWidth(), ofGetHeight()); //画面と同じ大きさの四角形を描画
@@ -194,6 +237,20 @@ void ofApp::draw(){
     ofTranslate(cam_posi_x, cam_posi_y, cam_posi_z);
     boids.draw();
 
+    cap.end();
+    cap.draw(0,0);
+    if(bRecording){
+        ofSetColor(255, 0, 0);
+        ofCircle(ofGetWidth() - 20, 20, 5);
+    }
+    
+    
+}
+
+void ofApp::audioIn(float *input, int bufferSize, int nChannels){
+    if(bRecording){
+        vidRecorder.addAudioSamples(input, bufferSize, nChannels);
+    }
 }
 
 //--------------------------------------------------------------
@@ -207,6 +264,18 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+
+    if(key=='r'){
+        bRecording = !bRecording;
+        if(bRecording && !vidRecorder.isInitialized()) {
+            vidRecorder.setup(fileName+ofGetTimestampString()+fileExt, SC_WIDTH, SC_HEIGHT, 30, sampleRate, channels);
+        }
+    }
+    if(key=='c'){
+        bRecording = false;
+        vidRecorder.close();
+    }
+
     
 }
 
@@ -251,3 +320,24 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
     
     
 }
+
+//--------------------------------------------------------------
+void ofApp::convertPixels(){
+    
+    
+    //Make Array for treating each pixcels
+    unsigned char * pixels = recordPixels.getPixels();
+    unsigned char pixs2[SC_WIDTH*SC_HEIGHT*3];
+    
+    for(int i = 0; i < SC_WIDTH*SC_HEIGHT; i++)
+    {
+        pixs2[i*3]   = pixels[i*4];
+        pixs2[i*3+1] = pixels[i*4+1];
+        pixs2[i*3+2] = pixels[i*4+2];
+    }
+    
+    //Copy the pixels into converted buffer with 3channel
+    converted.setFromExternalPixels(pixs2, SC_WIDTH, SC_HEIGHT, 3);
+    
+}
+

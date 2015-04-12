@@ -97,7 +97,7 @@ void Boids::reset(){
 
 void Boids::dragged(int x, int y){
     
-    if (x < 500){
+    if (x < (FLOY_MAX*0.8)){
         floys.erase(floys.begin());
         floy myfloy;
         float randomAngle = ofRandom(0, TWO_PI);

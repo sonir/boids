@@ -20,7 +20,7 @@
 #define DAMPING 0.05
 
 
-#define FLOY_MAX 300
+#define FLOY_MAX 150
 #define FLOY_NUM 50
 
 #define BRIGHTNESS 255
